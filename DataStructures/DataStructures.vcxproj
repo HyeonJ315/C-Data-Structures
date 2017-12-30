@@ -144,16 +144,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DynamicArray.h" />
+    <ClInclude Include="RedBlackTree.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="TD_DynamicArray.h" />
     <ClInclude Include="TD_LinkedList.h" />
     <ClInclude Include="_dynamicArray.h" />
     <ClInclude Include="_linkedList.h" />
+    <ClInclude Include="_redBlackTree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DynamicArray.c" />
     <ClCompile Include="LinkedList.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="RedBlackTree.c" />
     <ClCompile Include="TD_DynamicArray.c" />
     <ClCompile Include="TD_LinkedList.c" />
   </ItemGroup>

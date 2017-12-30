@@ -124,8 +124,8 @@ bool LinkedList_RemoveNode( LinkedList* linkedList, LinkedListNode* thisNode )
         case 2:
         {
             LinkedListNode* singleNode = leftNode = rightNode;
-            leftNode->Next  = singleNode;
-            rightNode->Prev = singleNode;
+            singleNode->Next = singleNode;
+            singleNode->Prev = singleNode;
             linkedList->Head = singleNode;
             linkedList->Tail = singleNode;
             break;
@@ -153,7 +153,7 @@ bool LinkedList_AppendTailNode( LinkedList* linkedList, LinkedListPayload payloa
     return linkedList->Head = linkedList->Tail = LinkedList_NewNode( payload );
 }
 
-bool LinkedList_AppendHeadNode(LinkedList* linkedList, LinkedListPayload payload)
+bool LinkedList_AppendHeadNode(LinkedList* linkedList, LinkedListPayload payload )
 {
     if (linkedList->Count > 0)
     {

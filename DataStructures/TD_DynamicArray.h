@@ -3,6 +3,6 @@
 
 #include "DynamicArray.h"
 void TD_DynamicArray_Deleter(DynamicArrayPayload integer);
-void TD_DynamicArray();
+void TD_DynamicArrayTestDriver();
 
 #endif

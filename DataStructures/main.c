@@ -6,6 +6,6 @@
 void main()
 {
     TD_LinkedListTestDriver();
-    TD_DynamicArray();
+    TD_DynamicArrayTestDriver();
     _CrtDumpMemoryLeaks();
 }

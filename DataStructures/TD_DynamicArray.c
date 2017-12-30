@@ -14,7 +14,7 @@ void TD_DynamicArray_Deleter(DynamicArrayPayload integer)
     //free( integer );
 }
 
-void TD_DynamicArray()
+void TD_DynamicArrayTestDriver()
 {
     DynamicArray* dynamicArray = DynamicArray_New( 0, TD_DynamicArray_Deleter );
     DynamicArray_Resize( dynamicArray, 10, 0 );

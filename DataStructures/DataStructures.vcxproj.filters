@@ -14,14 +14,17 @@
     <Filter Include="DataStructures\LinkedList">
       <UniqueIdentifier>{56dd9893-6ca7-4f8a-b467-c6e2e48314b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="DataStructures\Main">
-      <UniqueIdentifier>{03bd99a8-6d10-4e4d-8f94-58b5e1267939}</UniqueIdentifier>
-    </Filter>
     <Filter Include="DataStructures\DynamicArray\TestDriver">
       <UniqueIdentifier>{9a4d7ceb-f065-4dfa-8f04-70e14f25ae14}</UniqueIdentifier>
     </Filter>
     <Filter Include="DataStructures\LinkedList\TestDriver">
       <UniqueIdentifier>{fe21d080-ebac-42aa-8a07-b09cdba6662d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructures\RedBlackTree">
+      <UniqueIdentifier>{6c87b5d8-b273-414c-b953-008d737ecaac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructures\_Main">
+      <UniqueIdentifier>{03bd99a8-6d10-4e4d-8f94-58b5e1267939}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -37,11 +40,17 @@
     <ClInclude Include="_linkedList.h">
       <Filter>DataStructures\LinkedList</Filter>
     </ClInclude>
+    <ClInclude Include="TD_LinkedList.h">
+      <Filter>DataStructures\LinkedList\TestDriver</Filter>
+    </ClInclude>
     <ClInclude Include="TD_DynamicArray.h">
       <Filter>DataStructures\DynamicArray\TestDriver</Filter>
     </ClInclude>
-    <ClInclude Include="TD_LinkedList.h">
-      <Filter>DataStructures\LinkedList\TestDriver</Filter>
+    <ClInclude Include="RedBlackTree.h">
+      <Filter>DataStructures\RedBlackTree</Filter>
+    </ClInclude>
+    <ClInclude Include="_redBlackTree.h">
+      <Filter>DataStructures\RedBlackTree</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -51,14 +60,17 @@
     <ClCompile Include="LinkedList.c">
       <Filter>DataStructures\LinkedList</Filter>
     </ClCompile>
-    <ClCompile Include="TD_DynamicArray.c">
-      <Filter>DataStructures\DynamicArray\TestDriver</Filter>
-    </ClCompile>
     <ClCompile Include="TD_LinkedList.c">
       <Filter>DataStructures\LinkedList\TestDriver</Filter>
     </ClCompile>
     <ClCompile Include="main.c">
-      <Filter>DataStructures\Main</Filter>
+      <Filter>DataStructures\_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="TD_DynamicArray.c">
+      <Filter>DataStructures\DynamicArray\TestDriver</Filter>
+    </ClCompile>
+    <ClCompile Include="RedBlackTree.c">
+      <Filter>DataStructures\RedBlackTree</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

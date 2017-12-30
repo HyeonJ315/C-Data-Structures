@@ -13,6 +13,6 @@ bool          DynamicArray_RemoveBack ( DynamicArray* dynamicArray              
 bool          DynamicArray_RemoveFront( DynamicArray* dynamicArray                                              );
 bool          DynamicArray_Swap       ( DynamicArray* dynamicArray, int index1, int index2                      );
 int           DynamicArray_Find       ( DynamicArray* dynamicArray, DynamicArrayPayload value                   );
-void          DynamicArray_DebugPrint ( DynamicArray* dynamicArray );
+void          DynamicArray_DebugPrint ( DynamicArray* dynamicArray                                              );
 
 #endif
