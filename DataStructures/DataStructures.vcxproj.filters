@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="DataStructures">
+      <UniqueIdentifier>{4c4ab3a2-d830-4c88-bb60-6a214ddcd6f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructures\DynamicArray">
+      <UniqueIdentifier>{4a0addc6-780e-43db-a3bf-1688a4129f98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructures\LinkedList">
+      <UniqueIdentifier>{56dd9893-6ca7-4f8a-b467-c6e2e48314b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructures\Main">
+      <UniqueIdentifier>{03bd99a8-6d10-4e4d-8f94-58b5e1267939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructures\DynamicArray\TestDriver">
+      <UniqueIdentifier>{9a4d7ceb-f065-4dfa-8f04-70e14f25ae14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructures\LinkedList\TestDriver">
+      <UniqueIdentifier>{fe21d080-ebac-42aa-8a07-b09cdba6662d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_dynamicArray.h">
+      <Filter>DataStructures\DynamicArray</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicArray.h">
+      <Filter>DataStructures\DynamicArray</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>DataStructures\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="_linkedList.h">
+      <Filter>DataStructures\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="TD_DynamicArray.h">
+      <Filter>DataStructures\DynamicArray\TestDriver</Filter>
+    </ClInclude>
+    <ClInclude Include="TD_LinkedList.h">
+      <Filter>DataStructures\LinkedList\TestDriver</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DynamicArray.c">
+      <Filter>DataStructures\DynamicArray</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.c">
+      <Filter>DataStructures\LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="TD_DynamicArray.c">
+      <Filter>DataStructures\DynamicArray\TestDriver</Filter>
+    </ClCompile>
+    <ClCompile Include="TD_LinkedList.c">
+      <Filter>DataStructures\LinkedList\TestDriver</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>DataStructures\Main</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
