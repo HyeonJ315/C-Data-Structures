@@ -10,11 +10,16 @@ void            LinkedList_DeleteNode( LinkedList* linkedList, LinkedListNode* l
 void            LinkedList_DeleteList( LinkedList* linkedList                                 );
 void            LinkedList_ClearList ( LinkedList* linkedList                                 );
 
-bool LinkedList_InsertAfter    ( LinkedList* linkedList, LinkedListNode* thisNode, LinkedListPayload payload );
-bool LinkedList_InsertBefore   ( LinkedList* linkedList, LinkedListNode* thisNode, LinkedListPayload payload );
-bool LinkedList_RemoveNode     ( LinkedList* linkedList, LinkedListNode* thisNode  );
-bool LinkedList_AppendTailNode ( LinkedList* linkedList, LinkedListPayload payload );
-bool LinkedList_AppendHeadNode ( LinkedList* linkedList, LinkedListPayload payload );
+bool LinkedList_InsertAfter ( LinkedList* linkedList, LinkedListNode* thisNode, LinkedListPayload payload );
+bool LinkedList_InsertBefore( LinkedList* linkedList, LinkedListNode* thisNode, LinkedListPayload payload );
+bool LinkedList_AppendTail  ( LinkedList* linkedList, LinkedListPayload payload );
+bool LinkedList_AppendHead  ( LinkedList* linkedList, LinkedListPayload payload );
+
+bool LinkedList_NodeInsertAfter ( LinkedList* linkedList, LinkedListNode* thisNode, LinkedListNode* newNode );
+bool LinkedList_NodeInsertBefore( LinkedList* linkedList, LinkedListNode* thisNode, LinkedListNode* newNode );
+bool LinkedList_NodeAppendTail  ( LinkedList* linkedList, LinkedListNode* newNode  );
+bool LinkedList_NodeAppendHead  ( LinkedList* linkedList, LinkedListNode* newNode  );
+bool LinkedList_NodeRemove      ( LinkedList* linkedList, LinkedListNode* thisNode );
 LinkedListNode* LinkedList_Find( LinkedList* linkedList, LinkedListPayload payload );
 
 void LinkedList_DebugPrint(LinkedList* linkedList);

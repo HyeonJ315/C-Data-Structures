@@ -2,8 +2,8 @@
 #define TD_LINKEDLIST_C
 
 #include "LinkedList.h"
-#include <stdlib.h>
 #include <stdio.h>
+
 void TD_NodeDeleter( LinkedListPayload payload )
 {
     //free(payload);
@@ -16,23 +16,23 @@ void TD_LinkedListTestDriver()
     LinkedList_DebugPrint( linkedList );
 
     printf( "Inserting the first node with value 0 as payload.\n" );
-    LinkedList_AppendHeadNode( linkedList, 0 );
+    LinkedList_AppendHead( linkedList, 0 );
     LinkedList_DebugPrint( linkedList );
 
     printf("Removing the head node.\n");
-    LinkedList_RemoveNode( linkedList, linkedList->Head );
+    LinkedList_NodeRemove( linkedList, linkedList->Head );
     LinkedList_DebugPrint( linkedList );
 
     printf( "Inserting five nodes.\n " );
-    LinkedList_AppendTailNode( linkedList, 0 );
-    LinkedList_AppendHeadNode( linkedList, 1 );
-    LinkedList_AppendTailNode( linkedList, 2 );
-    LinkedList_AppendHeadNode( linkedList, 3 );
-    LinkedList_AppendTailNode( linkedList, 4 );
+    LinkedList_AppendTail( linkedList, 0 );
+    LinkedList_AppendHead( linkedList, 1 );
+    LinkedList_AppendTail( linkedList, 2 );
+    LinkedList_AppendHead( linkedList, 3 );
+    LinkedList_AppendTail( linkedList, 4 );
     LinkedList_DebugPrint( linkedList );
     
     printf( "Removing 2nd element from list. \n ");
-    LinkedList_RemoveNode( linkedList, linkedList->Head->Next );
+    LinkedList_NodeRemove( linkedList, linkedList->Head->Next );
     LinkedList_DebugPrint( linkedList );
 
     printf( "Adding 5 after 2nd element from list. \n " );
@@ -44,11 +44,11 @@ void TD_LinkedListTestDriver()
     LinkedList_DebugPrint(linkedList);
 
     printf( "Removing head from list. \n " );
-    LinkedList_RemoveNode(linkedList, linkedList->Head );
+    LinkedList_NodeRemove(linkedList, linkedList->Head );
     LinkedList_DebugPrint(linkedList);
 
     printf( "Removing tail from list. \n " );
-    LinkedList_RemoveNode(linkedList, linkedList->Tail );
+    LinkedList_NodeRemove(linkedList, linkedList->Tail );
     LinkedList_DebugPrint(linkedList);
 
     printf( "Clearing linked list. \n");
@@ -56,7 +56,7 @@ void TD_LinkedListTestDriver()
     LinkedList_DebugPrint(linkedList);
 
     printf( "Adding 7 to the list. \n" );
-    LinkedList_AppendTailNode( linkedList, 7 );
+    LinkedList_AppendTail( linkedList, 7 );
     LinkedList_DebugPrint(linkedList);
 
     printf( "Adding 8 after head. \n ");
@@ -64,7 +64,7 @@ void TD_LinkedListTestDriver()
     LinkedList_DebugPrint(linkedList);
 
     printf( "Removing head. \n" )    ;
-    LinkedList_RemoveNode( linkedList, linkedList->Head );
+    LinkedList_NodeRemove( linkedList, linkedList->Head );
     LinkedList_DebugPrint(linkedList);
 
     printf("Adding 9 before head. \n ");
@@ -72,7 +72,7 @@ void TD_LinkedListTestDriver()
     LinkedList_DebugPrint(linkedList);
 
     printf( "Removing tail. \n ");
-    LinkedList_RemoveNode( linkedList, linkedList->Tail );
+    LinkedList_NodeRemove( linkedList, linkedList->Tail );
     LinkedList_DebugPrint( linkedList );
 
     printf("Adding 10 after tail. \n ");

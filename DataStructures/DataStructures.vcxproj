@@ -148,6 +148,7 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="TD_DynamicArray.h" />
     <ClInclude Include="TD_LinkedList.h" />
+    <ClInclude Include="TD_RedBlackTree.h" />
     <ClInclude Include="_dynamicArray.h" />
     <ClInclude Include="_linkedList.h" />
     <ClInclude Include="_redBlackTree.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="RedBlackTree.c" />
     <ClCompile Include="TD_DynamicArray.c" />
     <ClCompile Include="TD_LinkedList.c" />
+    <ClCompile Include="TD_RedBlackTree.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

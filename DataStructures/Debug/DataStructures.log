@@ -1,30 +1,6 @@
-﻿  TD_LinkedList.c
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(28): warning C4047: 'function': 'LinkedListPayload' differs in levels of indirection from 'int'
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(28): warning C4024: 'LinkedList_AppendHeadNode': different types for formal and actual parameter 2
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(29): warning C4047: 'function': 'LinkedListPayload' differs in levels of indirection from 'int'
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(29): warning C4024: 'LinkedList_AppendTailNode': different types for formal and actual parameter 2
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(30): warning C4047: 'function': 'LinkedListPayload' differs in levels of indirection from 'int'
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(30): warning C4024: 'LinkedList_AppendHeadNode': different types for formal and actual parameter 2
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(31): warning C4047: 'function': 'LinkedListPayload' differs in levels of indirection from 'int'
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(31): warning C4024: 'LinkedList_AppendTailNode': different types for formal and actual parameter 2
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(39): warning C4047: 'function': 'LinkedListPayload' differs in levels of indirection from 'int'
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(39): warning C4024: 'LinkedList_InsertAfter': different types for formal and actual parameter 3
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(43): warning C4047: 'function': 'LinkedListPayload' differs in levels of indirection from 'int'
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(43): warning C4024: 'LinkedList_InsertBefore': different types for formal and actual parameter 3
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(59): warning C4047: 'function': 'LinkedListPayload' differs in levels of indirection from 'int'
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(59): warning C4024: 'LinkedList_AppendTailNode': different types for formal and actual parameter 2
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(63): warning C4047: 'function': 'LinkedListPayload' differs in levels of indirection from 'int'
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(63): warning C4024: 'LinkedList_InsertAfter': different types for formal and actual parameter 3
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(71): warning C4047: 'function': 'LinkedListPayload' differs in levels of indirection from 'int'
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(71): warning C4024: 'LinkedList_InsertBefore': different types for formal and actual parameter 3
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(79): warning C4047: 'function': 'LinkedListPayload' differs in levels of indirection from 'int'
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_linkedlist.c(79): warning C4024: 'LinkedList_InsertAfter': different types for formal and actual parameter 3
-  TD_DynamicArray.c
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_dynamicarray.c(21): warning C4047: '=': 'DynamicArrayPayload' differs in levels of indirection from 'int'
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_dynamicarray.c(33): warning C4047: 'function': 'DynamicArrayPayload' differs in levels of indirection from 'int'
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_dynamicarray.c(33): warning C4024: 'DynamicArray_Find': different types for formal and actual parameter 2
-  main.c
-  LinkedList.c
-  DynamicArray.c
+﻿  TD_RedBlackTree.c
+c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_redblacktree.c(26): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_redblacktree.c(38): warning C4047: '=': 'DynamicArrayPayload' differs in levels of indirection from 'int'
+  RedBlackTree.c
   Generating Code...
   DataStructures.vcxproj -> C:\Users\hyeon\Desktop\Tmp\DataStructures\Debug\DataStructures.exe

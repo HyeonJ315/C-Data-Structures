@@ -26,6 +26,9 @@
     <Filter Include="DataStructures\_Main">
       <UniqueIdentifier>{03bd99a8-6d10-4e4d-8f94-58b5e1267939}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DataStructures\RedBlackTree\TestDriver">
+      <UniqueIdentifier>{bd101581-4461-4ad7-8bcf-701e353674d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="_dynamicArray.h">
@@ -52,6 +55,9 @@
     <ClInclude Include="_redBlackTree.h">
       <Filter>DataStructures\RedBlackTree</Filter>
     </ClInclude>
+    <ClInclude Include="TD_RedBlackTree.h">
+      <Filter>DataStructures\RedBlackTree\TestDriver</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DynamicArray.c">
@@ -71,6 +77,9 @@
     </ClCompile>
     <ClCompile Include="RedBlackTree.c">
       <Filter>DataStructures\RedBlackTree</Filter>
+    </ClCompile>
+    <ClCompile Include="TD_RedBlackTree.c">
+      <Filter>DataStructures\RedBlackTree\TestDriver</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
