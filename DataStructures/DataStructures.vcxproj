@@ -146,6 +146,7 @@
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="RedBlackTree.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="RedBlackTreeHelpers.h" />
     <ClInclude Include="TD_DynamicArray.h" />
     <ClInclude Include="TD_LinkedList.h" />
     <ClInclude Include="TD_RedBlackTree.h" />
@@ -158,6 +159,7 @@
     <ClCompile Include="LinkedList.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="RedBlackTree.c" />
+    <ClCompile Include="RedBlackTreeHelpers.c" />
     <ClCompile Include="TD_DynamicArray.c" />
     <ClCompile Include="TD_LinkedList.c" />
     <ClCompile Include="TD_RedBlackTree.c" />

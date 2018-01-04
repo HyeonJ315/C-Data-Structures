@@ -25,9 +25,9 @@ typedef struct _redBlackTreeNode
 
 typedef struct _redBlackTree
 {
-    int Depth;
     int Count;
-    bool ( *LeftGreaterThanRight ) ( RedBlackTreePayload left, RedBlackTreePayload right );
+    // Return -1 if left is equal to right!!!!
+    char ( *LeftGreaterThanRight ) ( RedBlackTreePayload left, RedBlackTreePayload right );
     void ( *PayloadDeleter       ) ( RedBlackTreePayload payload                         );
     RedBlackTreeNode* Root;
 } RedBlackTree;

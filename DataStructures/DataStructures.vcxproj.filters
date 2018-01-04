@@ -58,6 +58,9 @@
     <ClInclude Include="TD_RedBlackTree.h">
       <Filter>DataStructures\RedBlackTree\TestDriver</Filter>
     </ClInclude>
+    <ClInclude Include="RedBlackTreeHelpers.h">
+      <Filter>DataStructures\RedBlackTree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DynamicArray.c">
@@ -80,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="TD_RedBlackTree.c">
       <Filter>DataStructures\RedBlackTree\TestDriver</Filter>
+    </ClCompile>
+    <ClCompile Include="RedBlackTreeHelpers.c">
+      <Filter>DataStructures\RedBlackTree</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

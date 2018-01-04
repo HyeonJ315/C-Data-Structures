@@ -1,6 +1,4 @@
-﻿  TD_RedBlackTree.c
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_redblacktree.c(26): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\hyeon\desktop\tmp\datastructures\datastructures\td_redblacktree.c(38): warning C4047: '=': 'DynamicArrayPayload' differs in levels of indirection from 'int'
-  RedBlackTree.c
-  Generating Code...
+﻿  RedBlackTreeHelpers.c
+c:\users\hyeon\desktop\tmp\datastructures\datastructures\redblacktreehelpers.c(216): warning C4029: declared formal parameter list different from definition
+c:\users\hyeon\desktop\tmp\datastructures\datastructures\redblacktreehelpers.c(367): warning C4716: 'RedBlackTree_Debug': must return a value
   DataStructures.vcxproj -> C:\Users\hyeon\Desktop\Tmp\DataStructures\Debug\DataStructures.exe
