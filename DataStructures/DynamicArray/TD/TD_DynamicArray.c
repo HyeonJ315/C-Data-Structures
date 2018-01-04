@@ -1,13 +1,15 @@
-
 #ifndef TD_DYNAMICARRAY_C
 #define TD_DYNAMICARRAY_C
 
 #define _CRTDBG_MAP_ALLOC
-#include "_dynamicArray.h"
-#include "DynamicArray.h"
+
+#include "../_dynamicArray.h"
+#include "../DynamicArray.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <crtdbg.h>  
+
 void TD_DynamicArray_Deleter(DynamicArrayPayload integer)
 {
     return;

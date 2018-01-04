@@ -1,8 +1,9 @@
 #define _CRTDBG_MAP_ALLOC  
 #include <crtdbg.h>  
-#include "TD_LinkedList.h"
-#include "TD_DynamicArray.h"
-#include "TD_RedBlackTree.h"
+
+#include "DynamicArray/TD/TD_DynamicArray.h"
+#include "LinkedList/TD/TD_LinkedList.h"
+#include "RedBlackTree/TD/TD_RedBlackTree.h"
 
 void main()
 {

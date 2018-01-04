@@ -1,7 +1,7 @@
 #ifndef TD_LINKEDLIST_C
 #define TD_LINKEDLIST_C
 
-#include "LinkedList.h"
+#include "../LinkedList.h"
 #include <stdio.h>
 
 void TD_NodeDeleter( LinkedListPayload payload )

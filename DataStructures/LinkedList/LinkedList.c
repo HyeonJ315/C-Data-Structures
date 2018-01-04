@@ -36,7 +36,6 @@ void LinkedList_DeleteNode( LinkedList* linkedList, LinkedListNode* linkedListNo
 
 void LinkedList_DeleteList( LinkedList* linkedList )
 {
-    LinkedListNode* head = linkedList->Head;
     LinkedListNode* curr = linkedList->Head;
     while( linkedList->Count > 0 )
     {
@@ -50,7 +49,6 @@ void LinkedList_DeleteList( LinkedList* linkedList )
 
 void LinkedList_ClearList( LinkedList* linkedList )
 {
-    LinkedListNode* head = linkedList->Head;
     LinkedListNode* curr = linkedList->Head;
     while( linkedList->Count > 0 )
     {

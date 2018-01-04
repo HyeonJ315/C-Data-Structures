@@ -1,15 +1,15 @@
-#include "DynamicArray.h"
 #ifndef TD_REDBLACKTREE_C
 #define TD_REDBLACKTREE_C
 
-#include "RedBlackTree.h"
+#include "../RedBlackTree.h"
+#include "../../DynamicArray/DynamicArray.h"
+
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
 
 char TD_RedBlackTreeComparator( RedBlackTreePayload leftNode, RedBlackTreePayload rightNode )
 {
-
     // Return anything but (true or 1) or (false or 0) for equality.
     if (leftNode == rightNode) return -1;
     return leftNode > rightNode;

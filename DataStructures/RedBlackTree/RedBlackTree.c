@@ -3,7 +3,7 @@
 
 #include "RedBlackTree.h"
 #include "RedBlackTreeHelpers.h"
-#include "LinkedList.h"
+#include "../LinkedList/LinkedList.h"
 
 #include <stdlib.h>
 #include <stdbool.h>
@@ -217,4 +217,5 @@ RedBlackTreeNode* RedBlackTree_NodeFind( RedBlackTree* redBlackTree, RedBlackTre
     }
     return NULL;
 }
+
 #endif /* REDBLACKTREE_C */

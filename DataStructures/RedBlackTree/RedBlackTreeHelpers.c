@@ -79,10 +79,8 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
         currRightChildNode.Parent     = &currSiblingNode;
         currRightChildNode.LeftChild  = NULL;
         currRightChildNode.RightChild = NULL;
-        int Counter = 0;
         while( currNode.Color == DoubleBlack && (RedBlackTreeNode*) currNode.Reference != redBlackTree->Root )
         {
-            printf( "Counter!: %d\n", Counter++ );
             // Current sibling is red.
             if (currSiblingNode.Color == Red)
             {
@@ -369,7 +367,7 @@ bool RedBlackTree_Assert( RedBlackTree* redBlackTree )
     if( redBlackTree->Root->Color == Red ) return false;
 
 
-    RedBlackTreeNode* currentNode = redBlackTree->Root;
+    //RedBlackTreeNode* currentNode = redBlackTree->Root;
     return true;
 
 }

@@ -143,26 +143,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="DynamicArray.h" />
-    <ClInclude Include="RedBlackTree.h" />
-    <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="RedBlackTreeHelpers.h" />
-    <ClInclude Include="TD_DynamicArray.h" />
-    <ClInclude Include="TD_LinkedList.h" />
-    <ClInclude Include="TD_RedBlackTree.h" />
-    <ClInclude Include="_dynamicArray.h" />
-    <ClInclude Include="_linkedList.h" />
-    <ClInclude Include="_redBlackTree.h" />
+    <ClInclude Include="DynamicArray\DynamicArray.h" />
+    <ClInclude Include="RedBlackTree\RedBlackTree.h" />
+    <ClInclude Include="LinkedList\LinkedList.h" />
+    <ClInclude Include="RedBlackTree\RedBlackTreeHelpers.h" />
+    <ClInclude Include="DynamicArray\TD\TD_DynamicArray.h" />
+    <ClInclude Include="LinkedList\TD\TD_LinkedList.h" />
+    <ClInclude Include="RedBlackTree\TD\TD_RedBlackTree.h" />
+    <ClInclude Include="DynamicArray\_dynamicArray.h" />
+    <ClInclude Include="LinkedList\_linkedList.h" />
+    <ClInclude Include="RedBlackTree\_redBlackTree.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DynamicArray.c" />
-    <ClCompile Include="LinkedList.c" />
+    <ClCompile Include="DynamicArray\DynamicArray.c" />
+    <ClCompile Include="LinkedList\LinkedList.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="RedBlackTree.c" />
-    <ClCompile Include="RedBlackTreeHelpers.c" />
-    <ClCompile Include="TD_DynamicArray.c" />
-    <ClCompile Include="TD_LinkedList.c" />
-    <ClCompile Include="TD_RedBlackTree.c" />
+    <ClCompile Include="RedBlackTree\RedBlackTree.c" />
+    <ClCompile Include="RedBlackTree\RedBlackTreeHelpers.c" />
+    <ClCompile Include="DynamicArray\TD\TD_DynamicArray.c" />
+    <ClCompile Include="LinkedList\TD\TD_LinkedList.c" />
+    <ClCompile Include="RedBlackTree\TD\TD_RedBlackTree.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
