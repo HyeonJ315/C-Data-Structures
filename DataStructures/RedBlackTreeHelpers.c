@@ -133,27 +133,27 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
                 if ( currParentNode.LeftChild == &currSiblingNode && currLeftChildNode.Color == Red )
                 {
                     RedBlackTree_NodeShiftRight( redBlackTree,  currParentNode.Reference );
-                    if ( currParentNode.Reference     ) currParentNode.Reference->Color    = Black;
-                    if ( currSiblingNode.Reference    ) currSiblingNode.Reference->Color   = Red;
-                    if ( currLeftChildNode.Reference  ) currLeftChildNode.Reference->Color = Black;
+                    if ( currSiblingNode.Reference   ) currSiblingNode.Reference->Color   = currParentNode.Reference->Color;
+                    if ( currParentNode.Reference    ) currParentNode.Reference->Color    = Black;
+                    if ( currLeftChildNode.Reference ) currLeftChildNode.Reference->Color = Black;
                 }
 
                 // Left Right Case
                 else if ( currParentNode.LeftChild == &currSiblingNode && currRightChildNode.Color == Red )
                 {
                     RedBlackTree_NodeShiftLeft ( redBlackTree,  currSiblingNode.Reference );
-                    RedBlackTree_NodeShiftRight( redBlackTree,  currParentNode.Reference);
-                    if ( currNode.Reference ) currNode.Reference->Color               = Black;
-                    if ( currParentNode.Reference ) currParentNode.Reference->Color   = Black;
-                    if ( currSiblingNode.Reference ) currSiblingNode.Reference->Color = Black;
+                    RedBlackTree_NodeShiftRight( redBlackTree,  currParentNode.Reference  );
+                    if ( currRightChildNode.Reference ) currRightChildNode.Reference->Color = currParentNode.Reference->Color;
+                    if ( currParentNode.Reference     ) currParentNode.Reference->Color     = Black;
+                    if ( currSiblingNode.Reference    ) currSiblingNode.Reference->Color    = Black;
                 }
                 
-                // Right Right Case
+                // Right Right Case 
                 else if ( currParentNode.RightChild == &currSiblingNode && currRightChildNode.Color == Red )
                 {
                     RedBlackTree_NodeShiftLeft( redBlackTree,  currParentNode.Reference );
+                    if ( currSiblingNode.Reference    ) currSiblingNode.Reference->Color    = currParentNode.Reference->Color;
                     if ( currParentNode.Reference     ) currParentNode.Reference->Color     = Black;
-                    if ( currSiblingNode.Reference    ) currSiblingNode.Reference->Color    = Red;
                     if ( currRightChildNode.Reference ) currRightChildNode.Reference->Color = Black;
                 }
                 
@@ -161,10 +161,10 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
                 else if ( currParentNode.RightChild == &currSiblingNode && currLeftChildNode.Color == Red )
                 {
                     RedBlackTree_NodeShiftRight( redBlackTree,  currSiblingNode.Reference );
-                    RedBlackTree_NodeShiftLeft ( redBlackTree,  currParentNode.Reference);
-                    if ( currNode.Reference        ) currNode.Reference->Color        = Black;
-                    if ( currParentNode.Reference  ) currParentNode.Reference->Color  = Black;
-                    if ( currSiblingNode.Reference ) currSiblingNode.Reference->Color = Black;
+                    RedBlackTree_NodeShiftLeft ( redBlackTree,  currParentNode.Reference  );
+                    if ( currLeftChildNode.Reference ) currLeftChildNode.Reference->Color = currParentNode.Reference->Color;
+                    if ( currParentNode.Reference    ) currParentNode.Reference->Color    = Black;
+                    if ( currSiblingNode.Reference   ) currSiblingNode.Reference->Color   = Black;
                 }
                 return;
             }
@@ -367,7 +367,10 @@ bool RedBlackTree_Assert( RedBlackTree* redBlackTree )
     if( redBlackTree->Count == 0 && redBlackTree->Root != NULL ) return false;
     if( !redBlackTree->Root )              return true;
     if( redBlackTree->Root->Color == Red ) return false;
+
+
     RedBlackTreeNode* currentNode = redBlackTree->Root;
+    return true;
 
 }
 #endif
