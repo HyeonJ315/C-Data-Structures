@@ -1,4 +1,3 @@
-#include <crtdbg.h>
 #ifndef REDBLACKTREE_C
 #define REDBLACKTREE_C
 

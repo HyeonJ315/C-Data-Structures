@@ -185,7 +185,7 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
                 if (currSiblingNode.Reference) currSiblingNode.Reference->Color = Red;
                 if (currNode.Reference)        currNode.Reference->Color = Black;
 
-                currNode.Reference = currParentNode.Reference ? currParentNode.Reference : NULL;
+                currNode.Reference = currParentNode.Reference;
                 currNode.Color     = DoubleBlack;
                 currParentNode.Reference = currParentNode.Reference ? currParentNode.Reference->Parent : NULL;
                 currParentNode.Color     = currParentNode.Reference ? currParentNode.Reference->Color  : Black;
