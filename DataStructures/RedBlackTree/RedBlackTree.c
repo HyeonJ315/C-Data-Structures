@@ -220,12 +220,17 @@ RedBlackTreeNode* RedBlackTree_NodeFind( RedBlackTree* redBlackTree, RedBlackTre
 }
 
 
-bool RedBlackTree_Assert( RedBlackTree* redBlackTree )
+bool RedBlackTree_Assert( RedBlackTree* redBlackTree, bool printError )
 {
     if( !redBlackTree )                    return false;
     if( redBlackTree->Count == 0 && redBlackTree->Root != NULL ) return false;
     if( !redBlackTree->Root )              return true;
-    if( redBlackTree->Root->Color == Red ) return false;
+
+    if( redBlackTree->Root->Color == Red )
+    {
+        if ( printError ) fprintf( stderr, "Error: Root is not black.\n" ); 
+        return false;
+    }
 
     typedef struct _internalNode
     {
@@ -250,7 +255,7 @@ bool RedBlackTree_Assert( RedBlackTree* redBlackTree )
             if( currentNode->Reference->LeftChild  && currentNode->Reference->LeftChild->Color  == Red || 
                 currentNode->Reference->RightChild && currentNode->Reference->RightChild->Color == Red )
             {
-                printf( "Error: Red node does not have black children.\n" );
+                if( printError ) fprintf( stderr, "Error: Red node does not have black children.\n" );
                 returnLogic = true;
             }
         }
@@ -260,7 +265,7 @@ bool RedBlackTree_Assert( RedBlackTree* redBlackTree )
             if( BlackCounter == -1 ) BlackCounter = currentNode->BlackCounter;
             if ( BlackCounter != currentNode->BlackCounter )
             {
-                printf( "Error: Not all paths have an equal number of black nodes.\n" );
+                if( printError ) fprintf( stderr, "Error: Not all paths have an equal number of black nodes.\n" );
                 returnLogic = true;
             }
         }
@@ -289,7 +294,7 @@ bool RedBlackTree_Assert( RedBlackTree* redBlackTree )
         if ( currentNode->Reference->LeftChild  )
         {
             InternalNode* leftChild = malloc(sizeof(InternalNode));
-            leftChild->Reference = currentNode->Reference->LeftChild;
+            leftChild->Reference    = currentNode->Reference->LeftChild;
             leftChild->BlackCounter = currentNode->Reference->LeftChild->Color == Black ? currentNode->BlackCounter + 1 : currentNode->BlackCounter;
             LinkedList_AppendHead( linkedList, (LinkedListPayload) leftChild );
         }
@@ -297,6 +302,5 @@ bool RedBlackTree_Assert( RedBlackTree* redBlackTree )
     }
     LinkedList_DeleteList(linkedList);
     return true;
-
 }
 #endif /* REDBLACKTREE_C */

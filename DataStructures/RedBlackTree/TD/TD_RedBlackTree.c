@@ -25,6 +25,18 @@ void TD_RedBlackTreePrint( RedBlackTree* redBlackTree, RedBlackTreeNode* redBlac
     printf("%d ", (int) redBlackTreeNode->Payload );
 }
 
+void TD_Randomizer( DynamicArray* dynamicArray )
+{
+    int count = dynamicArray->Count;
+    for (int i = 0; i < count; i++)
+    {
+        int randIndex = (rand() % (count - i)) + i;
+        int tmp = (int)dynamicArray->Payload[i];
+        dynamicArray->Payload[i] = dynamicArray->Payload[randIndex];
+        dynamicArray->Payload[randIndex] = (DynamicArrayPayload)tmp;
+    }
+}
+
 void TD_RedBlackTreeTestDriver()
 {
     srand( time(NULL) );
@@ -32,38 +44,33 @@ void TD_RedBlackTreeTestDriver()
     
     DynamicArray* dynamicArray = DynamicArray_New( 0, NULL );
 
-    int R = 1024;
+    int R = 20;
     DynamicArray_Resize(dynamicArray, R, 0);
-    int TestArray[20] = {18, 2, 6, 15, 11, 14, 17, 9, 7, 13, 0, 10, 19, 1, 4, 5, 16, 8, 3, 12};
+    //int TestArray[20] = {18, 2, 6, 15, 11, 14, 17, 9, 7, 13, 0, 10, 19, 1, 4, 5, 16, 8, 3, 12};
     // Perform stress tests.
-    for (int j = 0; j < 100; j++)
+    for (int j = 0; j < 10; j++)
     {
         RedBlackTree* redBlackTree = RedBlackTree_NewTree(TD_RedBlackTreeComparator, TD_RedBlackTreePayloadDeleter);
         for (int i = 0; i < R; i++) dynamicArray->Payload[i] = i;
-        for (int i = 0; i < R; i++)
-        {
 
-            int randIndex = (rand() % (R - i)) + i;
-            int tmp = (int)dynamicArray->Payload[i];
-            dynamicArray->Payload[i] = dynamicArray->Payload[randIndex];
-            dynamicArray->Payload[randIndex] = (DynamicArrayPayload) tmp;
-        }
-        //printf("Inserting: ");
+        TD_Randomizer( dynamicArray );
+        printf( "\nInserting: " );
         for ( int i = 0; i < R; i++ )
         {
-            //printf( "%d, ", dynamicArray->Payload[i] );
+            printf( "%d, ", dynamicArray->Payload[i] );
             RedBlackTree_Insert(redBlackTree, dynamicArray->Payload[i] );
             //printf( "%d, ", TestArray[i] );
             //RedBlackTree_Insert( redBlackTree, TestArray[i] );
         }
-        //printf( "\nDeleting: " );
+        TD_Randomizer( dynamicArray );
+        printf( "\nDeleting: " );
         for ( int i = 0; i < R; i++ )
         {
-            //printf("%d, ", dynamicArray->Payload[i] );
+            printf("%d, ", dynamicArray->Payload[i] );
             RedBlackTree_NodeRemove( redBlackTree, RedBlackTree_NodeFind( redBlackTree, dynamicArray->Payload[i] ) );
             //printf( "%d, ", TestArray[i] );
             //RedBlackTree_NodeRemove( redBlackTree, RedBlackTree_NodeFind(redBlackTree, TestArray[i]) );
-            RedBlackTree_Assert(redBlackTree);
+            RedBlackTree_Assert( redBlackTree, true );
         }
         RedBlackTree_DeleteTree(redBlackTree);
     }

@@ -8,7 +8,7 @@ RedBlackTree* RedBlackTree_NewTree( char (*comparator)(RedBlackTreePayload,RedBl
                                     void (*payloadDeleter)( RedBlackTreePayload ) );
 RedBlackTreeNode* RedBlackTree_NewNode( RedBlackTreePayload payload );
 
-bool RedBlackTree_Assert( RedBlackTree* redBlackTree );
+bool RedBlackTree_Assert( RedBlackTree* redBlackTree, bool printErrors );
 void RedBlackTree_DeleteTree( RedBlackTree* redBlackTree );
 void RedBlackTree_DeleteNode( RedBlackTree* redBlackTree, RedBlackTreeNode* redBlackTreeNode );
 

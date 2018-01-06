@@ -1,11 +1,10 @@
-#include "../LinkedList/LinkedList.h"
 #ifndef REDBLACKTREEHELPERS_C
 #define REDBLACKTREEHELPERS_C
 
 #include "RedBlackTreeHelpers.h"
 #include "_redBlackTree.h"
 #include <stdlib.h>
-#include <stdio.h>
+
 void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* deletingNode,  RedBlackTreeNode* replacingNode )
 {
     if( !redBlackTree         ) return;
@@ -80,6 +79,7 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
         currRightChildNode.Parent     = &currSiblingNode;
         currRightChildNode.LeftChild  = NULL;
         currRightChildNode.RightChild = NULL;
+
         while( currNode.Color == DoubleBlack && (RedBlackTreeNode*) currNode.Reference != redBlackTree->Root )
         {
             // Current sibling is red.
@@ -187,6 +187,7 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
 
                 currNode.Reference = currParentNode.Reference;
                 currNode.Color     = DoubleBlack;
+
                 currParentNode.Reference = currParentNode.Reference ? currParentNode.Reference->Parent : NULL;
                 currParentNode.Color     = currParentNode.Reference ? currParentNode.Reference->Color  : Black;
                 if ( currParentNode.Reference && currParentNode.Reference->LeftChild == currNode.Reference )
