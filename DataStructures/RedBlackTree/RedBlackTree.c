@@ -1,3 +1,4 @@
+#include <crtdbg.h>
 #ifndef REDBLACKTREE_C
 #define REDBLACKTREE_C
 
@@ -5,6 +6,7 @@
 #include "RedBlackTreeHelpers.h"
 #include "../LinkedList/LinkedList.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -218,4 +220,84 @@ RedBlackTreeNode* RedBlackTree_NodeFind( RedBlackTree* redBlackTree, RedBlackTre
     return NULL;
 }
 
+
+bool RedBlackTree_Assert( RedBlackTree* redBlackTree )
+{
+    if( !redBlackTree )                    return false;
+    if( redBlackTree->Count == 0 && redBlackTree->Root != NULL ) return false;
+    if( !redBlackTree->Root )              return true;
+    if( redBlackTree->Root->Color == Red ) return false;
+
+    typedef struct _internalNode
+    {
+        RedBlackTreeNode* Reference;
+        int BlackCounter;
+    } InternalNode;
+
+    int BlackCounter = -1;
+    LinkedList* linkedList = LinkedList_NewList(NULL);
+
+    InternalNode* rootNode = malloc( sizeof( InternalNode ) );
+    rootNode->Reference    = redBlackTree->Root;
+    rootNode->BlackCounter = 1;
+
+    LinkedList_AppendHead( linkedList, (LinkedListPayload) rootNode );
+    while (linkedList->Count != 0)
+    {
+        InternalNode* currentNode = (InternalNode*) linkedList->Head->Payload;
+        bool returnLogic = false;
+        if ( currentNode->Reference->Color == Red )
+        {
+            if( currentNode->Reference->LeftChild  && currentNode->Reference->LeftChild->Color  == Red || 
+                currentNode->Reference->RightChild && currentNode->Reference->RightChild->Color == Red )
+            {
+                printf( "Error: Red node does not have black children.\n" );
+                returnLogic = true;
+            }
+        }
+
+        if ( !currentNode->Reference->RightChild && !currentNode->Reference->LeftChild )
+        {
+            if( BlackCounter == -1 ) BlackCounter = currentNode->BlackCounter;
+            if ( BlackCounter != currentNode->BlackCounter )
+            {
+                printf( "Error: Not all paths have an equal number of black nodes.\n" );
+                returnLogic = true;
+            }
+        }
+
+        if( returnLogic )
+        {
+            while( linkedList->Count != 0 )
+            {
+                free( linkedList->Head->Payload );
+                LinkedList_NodeRemove( linkedList, linkedList->Head );
+            }
+            LinkedList_DeleteList(linkedList);
+            return false;
+        }
+
+        LinkedList_NodeRemove( linkedList, linkedList->Head );
+
+        if ( currentNode->Reference->RightChild )
+        {
+            InternalNode* rightChild = malloc(sizeof(InternalNode));
+            rightChild->Reference    = currentNode->Reference->RightChild;
+            rightChild->BlackCounter = currentNode->Reference->RightChild->Color == Black ? currentNode->BlackCounter + 1 : currentNode->BlackCounter;
+            LinkedList_AppendHead( linkedList, (LinkedListPayload) rightChild );
+        }
+
+        if ( currentNode->Reference->LeftChild  )
+        {
+            InternalNode* leftChild = malloc(sizeof(InternalNode));
+            leftChild->Reference = currentNode->Reference->LeftChild;
+            leftChild->BlackCounter = currentNode->Reference->LeftChild->Color == Black ? currentNode->BlackCounter + 1 : currentNode->BlackCounter;
+            LinkedList_AppendHead( linkedList, (LinkedListPayload) leftChild );
+        }
+        free( currentNode );
+    }
+    LinkedList_DeleteList(linkedList);
+    return true;
+
+}
 #endif /* REDBLACKTREE_C */

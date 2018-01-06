@@ -1,3 +1,4 @@
+#include "../LinkedList/LinkedList.h"
 #ifndef REDBLACKTREEHELPERS_C
 #define REDBLACKTREEHELPERS_C
 
@@ -181,12 +182,13 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
 
                 // Parent is black. Try again with a new tree.
 
-                if (currNode.Reference) currNode.Reference->Color = Black;
+                if (currSiblingNode.Reference) currSiblingNode.Reference->Color = Red;
+                if (currNode.Reference)        currNode.Reference->Color = Black;
 
+                currNode.Reference = currParentNode.Reference ? currParentNode.Reference : NULL;
+                currNode.Color     = DoubleBlack;
                 currParentNode.Reference = currParentNode.Reference ? currParentNode.Reference->Parent : NULL;
                 currParentNode.Color     = currParentNode.Reference ? currParentNode.Reference->Color  : Black;
-                currNode.Reference       = currNode.Reference ? currNode.Reference->Parent : NULL;
-                currNode.Color           = currNode.Reference ? currNode.Reference->Color  : Black;
                 if ( currParentNode.Reference && currParentNode.Reference->LeftChild == currNode.Reference )
                 {
                     currParentNode.LeftChild  = &currNode;
@@ -359,16 +361,4 @@ bool RedBlackTree_NodeShiftRight( RedBlackTree* redBlackTree, RedBlackTreeNode* 
     return true;
 }
 
-bool RedBlackTree_Assert( RedBlackTree* redBlackTree )
-{
-    if( !redBlackTree )                    return false;
-    if( redBlackTree->Count == 0 && redBlackTree->Root != NULL ) return false;
-    if( !redBlackTree->Root )              return true;
-    if( redBlackTree->Root->Color == Red ) return false;
-
-
-    //RedBlackTreeNode* currentNode = redBlackTree->Root;
-    return true;
-
-}
 #endif
