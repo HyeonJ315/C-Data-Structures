@@ -80,8 +80,13 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
         currRightChildNode.LeftChild  = NULL;
         currRightChildNode.RightChild = NULL;
 
-        while( currNode.Color == DoubleBlack && (RedBlackTreeNode*) currNode.Reference != redBlackTree->Root )
+        while( true )
         {
+            if( currNode.Reference == redBlackTree->Root )
+            {
+                break;
+            }
+
             // Current sibling is red.
             if (currSiblingNode.Color == Red)
             {
@@ -94,7 +99,6 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
 
                     // Try again with a new tree.
                     currParentNode.Color = Red;
-                    currNode.Color       = DoubleBlack;
 
                     currSiblingNode.Reference    = currParentNode.Reference     ? currParentNode.Reference->LeftChild   : NULL;
                     currSiblingNode.Color        = currSiblingNode.Reference    ? currSiblingNode.Reference->Color      : Black;
@@ -113,7 +117,6 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
 
                     // Try again with a new tree.
                     currParentNode.Color = Red;
-                    currNode.Color       = DoubleBlack;
 
                     currSiblingNode.Reference    = currParentNode.Reference     ? currParentNode.Reference->RightChild  : NULL;
                     currSiblingNode.Color        = currSiblingNode.Reference    ? currSiblingNode.Reference->Color      : Black;
@@ -165,7 +168,7 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
                     if ( currParentNode.Reference    ) currParentNode.Reference->Color    = Black;
                     if ( currSiblingNode.Reference   ) currSiblingNode.Reference->Color   = Black;
                 }
-                return;
+                break;
             }
 
             // Children are black
@@ -177,16 +180,15 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
                     if( currSiblingNode.Reference ) currSiblingNode.Reference->Color = Red;
                     if( currParentNode.Reference  ) currParentNode.Reference->Color  = Black;
                     if( currNode.Reference        ) currNode.Reference->Color        = Black;
-                    return;
+                    break;
                 }
 
                 // Parent is black. Try again with a new tree.
 
-                if (currSiblingNode.Reference) currSiblingNode.Reference->Color = Red;
-                if (currNode.Reference)        currNode.Reference->Color = Black;
+                if ( currSiblingNode.Reference ) currSiblingNode.Reference->Color = Red;
+                if ( currNode.Reference        ) currNode.Reference->Color        = Black;
 
                 currNode.Reference = currParentNode.Reference;
-                currNode.Color     = DoubleBlack;
 
                 currParentNode.Reference = currParentNode.Reference ? currParentNode.Reference->Parent : NULL;
                 currParentNode.Color     = currParentNode.Reference ? currParentNode.Reference->Color  : Black;
