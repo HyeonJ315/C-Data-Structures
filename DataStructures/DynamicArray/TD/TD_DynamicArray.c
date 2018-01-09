@@ -33,7 +33,7 @@ void TD_DynamicArrayTestDriver()
     DynamicArray_DebugPrint( dynamicArray );
 
     printf("%d", DynamicArray_Find( dynamicArray, 2 ) );
-    DynamicArray_Delete( dynamicArray );
+    DynamicArray_DeleteArray( dynamicArray );
     return;
 }
 

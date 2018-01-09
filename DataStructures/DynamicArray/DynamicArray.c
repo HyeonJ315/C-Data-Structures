@@ -24,7 +24,7 @@ DynamicArray* DynamicArray_New( int count, void (*payloadDeleter)(DynamicArrayPa
     return dynamicArray;
 }
 
-void DynamicArray_Delete( DynamicArray* dynamicArray )
+void DynamicArray_DeleteArray( DynamicArray* dynamicArray )
 {
     if ( !dynamicArray ) return;
     if ( dynamicArray->PayloadDeleter )

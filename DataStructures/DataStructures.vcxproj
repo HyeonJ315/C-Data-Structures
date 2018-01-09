@@ -144,6 +144,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DynamicArray\DynamicArray.h" />
+    <ClInclude Include="HashTable\HashTable.h" />
+    <ClInclude Include="HashTable\HashTableHelpers.h" />
+    <ClInclude Include="HashTable\TD\TD_HashTable.h" />
+    <ClInclude Include="HashTable\_hashTable.h" />
     <ClInclude Include="RedBlackTree\RedBlackTree.h" />
     <ClInclude Include="LinkedList\LinkedList.h" />
     <ClInclude Include="RedBlackTree\RedBlackTreeHelpers.h" />
@@ -156,6 +160,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DynamicArray\DynamicArray.c" />
+    <ClCompile Include="HashTable\HashTable.c" />
+    <ClCompile Include="HashTable\HashTableHelpers.c" />
+    <ClCompile Include="HashTable\TD\TD_HashTable.c" />
     <ClCompile Include="LinkedList\LinkedList.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="RedBlackTree\RedBlackTree.c" />

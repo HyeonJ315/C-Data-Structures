@@ -158,7 +158,7 @@ bool LinkedList_NodeAppendTail(LinkedList * linkedList, LinkedListNode * newNode
 
     if (linkedList->Count > 0)
     {
-        return LinkedList_InsertAfter(linkedList, linkedList->Tail, newNode );
+        return LinkedList_NodeInsertAfter(linkedList, linkedList->Tail, newNode );
     }
     linkedList->Count++;
     return NULL != (linkedList->Head = linkedList->Tail = newNode);

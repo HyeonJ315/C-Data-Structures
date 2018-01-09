@@ -46,7 +46,6 @@ void TD_RedBlackTreeTestDriver()
 
     int R = 20;
     DynamicArray_Resize(dynamicArray, R, 0);
-    //int TestArray[20] = {18, 2, 6, 15, 11, 14, 17, 9, 7, 13, 0, 10, 19, 1, 4, 5, 16, 8, 3, 12};
     // Perform stress tests.
     for (int j = 0; j < 10; j++)
     {
@@ -59,8 +58,6 @@ void TD_RedBlackTreeTestDriver()
         {
             printf( "%d, ", dynamicArray->Payload[i] );
             RedBlackTree_Insert(redBlackTree, dynamicArray->Payload[i] );
-            //printf( "%d, ", TestArray[i] );
-            //RedBlackTree_Insert( redBlackTree, TestArray[i] );
         }
         TD_Randomizer( dynamicArray );
         printf( "\nDeleting: " );
@@ -68,14 +65,12 @@ void TD_RedBlackTreeTestDriver()
         {
             printf("%d, ", dynamicArray->Payload[i] );
             RedBlackTree_NodeRemove( redBlackTree, RedBlackTree_NodeFind( redBlackTree, dynamicArray->Payload[i] ) );
-            //printf( "%d, ", TestArray[i] );
-            //RedBlackTree_NodeRemove( redBlackTree, RedBlackTree_NodeFind(redBlackTree, TestArray[i]) );
             RedBlackTree_Assert( redBlackTree, true );
         }
         RedBlackTree_DeleteTree(redBlackTree);
     }
     
-    DynamicArray_Delete( dynamicArray );
+    DynamicArray_DeleteArray( dynamicArray );
 }
 
 #endif

@@ -57,7 +57,7 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
         currParentNode.RightChild     = replacementIsLeftChild ? &currSiblingNode : &currNode;
         
         currNode.Reference            = replacingNode;
-        currNode.Color                = DoubleBlack;
+        currNode.Color                = replacingNode ? replacingNode->Color : Black;
         currNode.Parent               = &currParentNode;
         currNode.LeftChild            = NULL;
         currNode.RightChild           = NULL;
@@ -82,6 +82,7 @@ void RedBlackTree_RemoveRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* de
 
         while( true )
         {
+            // Current node is the root.
             if( currNode.Reference == redBlackTree->Root )
             {
                 break;
@@ -231,9 +232,9 @@ void RedBlackTree_InsertRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* cu
     RedBlackTreeNode *parentNode      = currentNode->Parent;
     RedBlackTreeNode *uncleNode       = NULL;
 
-    if( grandParentNode &&  grandParentNode->RightChild == parentNode )
+    if( grandParentNode && grandParentNode->RightChild == parentNode )
         uncleNode = grandParentNode->LeftChild;
-    if( grandParentNode &&  grandParentNode->LeftChild  == parentNode )
+    if( grandParentNode && grandParentNode->LeftChild  == parentNode )
         uncleNode = grandParentNode->RightChild;
 
     RedBlackTreeColor uncleColor  = uncleNode ? uncleNode->Color : Black;

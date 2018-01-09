@@ -61,6 +61,10 @@
     <ClInclude Include="RedBlackTree\TD\TD_RedBlackTree.h">
       <Filter>DataStructures\RedBlackTree\TestDriver</Filter>
     </ClInclude>
+    <ClInclude Include="HashTable\_hashTable.h" />
+    <ClInclude Include="HashTable\HashTable.h" />
+    <ClInclude Include="HashTable\HashTableHelpers.h" />
+    <ClInclude Include="HashTable\TD\TD_HashTable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -87,5 +91,8 @@
     <ClCompile Include="RedBlackTree\TD\TD_RedBlackTree.c">
       <Filter>DataStructures\RedBlackTree\TestDriver</Filter>
     </ClCompile>
+    <ClCompile Include="HashTable\HashTable.c" />
+    <ClCompile Include="HashTable\HashTableHelpers.c" />
+    <ClCompile Include="HashTable\TD\TD_HashTable.c" />
   </ItemGroup>
 </Project>

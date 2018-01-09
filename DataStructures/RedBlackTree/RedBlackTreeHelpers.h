@@ -2,6 +2,7 @@
 #define REDBLACKTREEHELPERS_H
 
 #include "_redBlackTree.h"
+#include <stdbool.h>
 
 void RedBlackTree_RemoveRepair( RedBlackTree*, RedBlackTreeNode*, RedBlackTreeNode* );
 void RedBlackTree_InsertRepair( RedBlackTree* redBlackTree, RedBlackTreeNode* redBlackTreeNode );

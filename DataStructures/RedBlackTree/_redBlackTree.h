@@ -1,13 +1,10 @@
 #ifndef _REDBLACKTREE_H
 #define _REDBLACKTREE_H
 
-#include <stdbool.h>
-
 typedef enum _redBlackTreeColor
 {
     Red   = 0,
     Black = 1,
-    DoubleBlack = 2,
 } RedBlackTreeColor;
 
 typedef int* RedBlackTreePayload;

@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 DynamicArray* DynamicArray_New        ( int count, void (*payloadDeleter)(DynamicArrayPayload)                  );
-void          DynamicArray_Delete     ( DynamicArray* dynamicArray                                              );
+void          DynamicArray_DeleteArray( DynamicArray* dynamicArray                                              );
 bool          DynamicArray_Resize     ( DynamicArray* dynamicArray, int valueCount, DynamicArrayPayload fillVal );
 bool          DynamicArray_Add        ( DynamicArray* dynamicArray, DynamicArrayPayload value                   );
 bool          DynamicArray_RemoveAt   ( DynamicArray* dynamicArray, int index                                   );

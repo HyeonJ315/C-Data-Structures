@@ -298,6 +298,7 @@ bool RedBlackTree_Assert( RedBlackTree* redBlackTree, bool printError )
             leftChild->BlackCounter = currentNode->Reference->LeftChild->Color == Black ? currentNode->BlackCounter + 1 : currentNode->BlackCounter;
             LinkedList_AppendHead( linkedList, (LinkedListPayload) leftChild );
         }
+
         free( currentNode );
     }
     LinkedList_DeleteList(linkedList);

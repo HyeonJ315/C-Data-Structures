@@ -20,6 +20,6 @@ void RedBlackTree_PreOrderTraversal ( RedBlackTree* redBlackTree, void (*forEach
 void RedBlackTree_InOrderTraversal  ( RedBlackTree* redBlackTree, void (*forEachNode)(RedBlackTree*, RedBlackTreeNode*) );
 void RedBlackTree_PostOrderTraversal( RedBlackTree* redBlackTree, void (*forEachNode)(RedBlackTree*, RedBlackTreeNode*) );
 
-RedBlackTreeNode*   RedBlackTree_NodeFind( RedBlackTree* redBlackTree, RedBlackTreePayload payload );
+RedBlackTreeNode* RedBlackTree_NodeFind( RedBlackTree* redBlackTree, RedBlackTreePayload payload );
 
 #endif /* REDBLACKTREE_H */
