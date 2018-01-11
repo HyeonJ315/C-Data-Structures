@@ -66,7 +66,7 @@ bool LinkedList_InsertAfter( LinkedList* linkedList, LinkedListNode* thisNode, L
     if ( !linkedList ) return false;
     if ( !thisNode   ) return false;
     LinkedListNode* newNode = LinkedList_NewNode( payload );
-    if (!LinkedList_NodeInsertAfter(linkedList, thisNode, newNode))
+    if ( !LinkedList_NodeInsertAfter(linkedList, thisNode, newNode) )
     {
         LinkedList_DeleteNode(linkedList, newNode);
         return false;
@@ -241,7 +241,7 @@ void LinkedList_DebugPrint(LinkedList* linkedList)
     do
     {
         printf("   Prev Node : 0x%p\n", curr->Prev);
-        printf("   Node      : 0x%p, Payload: 0x%p \n", curr, curr->Payload);
+        printf("   Node      : 0x%p, PayloadArr: 0x%p \n", curr, curr->Payload);
         printf("   Next Node : 0x%p\n", curr->Next);
         curr = curr->Next;
     } while (head != curr);

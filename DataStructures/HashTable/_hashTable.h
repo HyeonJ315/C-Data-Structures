@@ -5,18 +5,20 @@
 #include "../LinkedList/LinkedList.h"
 
 #define DEFAULT_HASHARRAY_SIZE 16
-#define DEFAULT_LOADFACTOR 1
+#define DEFAULT_LOADFACTOR 0.75
 
 typedef char* HashKey;
 typedef int   HashKeyBytes;
-typedef int*  HashValue;
+typedef void* HashValue;
 
 typedef struct _hashEntry
 {
-    int          Hash;
+    size_t       Hash;
     HashKey      Key;
     HashKeyBytes KeyBytes;
     HashValue    Value;
+
+    LinkedList*     HashArrayListRef;
     LinkedListNode* HashArrayNode;
     LinkedListNode* HashListNode;
 } HashEntry;
@@ -25,9 +27,8 @@ typedef struct _hashTable
 {
     DynamicArray* HashArray;
     LinkedList* HashList;
-    int arraySize;
-    int  ( *HashFunction   )( HashKey hashKey, HashKeyBytes keyBytes );
-    void ( *PayloadDeleter )( HashValue payload );
+    size_t ( *HashFunction   )( HashKey hashKey, HashKeyBytes keyBytes );
+    void   ( *PayloadDeleter )( HashValue payload );
     float LoadFactor;
     float MaxLoadFactor;
     int Count;

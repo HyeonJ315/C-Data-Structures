@@ -7,7 +7,7 @@ typedef enum _redBlackTreeColor
     Black = 1,
 } RedBlackTreeColor;
 
-typedef int* RedBlackTreePayload;
+typedef void* RedBlackTreePayload;
 
 typedef struct _redBlackTreeNode RedBlackTreeNode;
 

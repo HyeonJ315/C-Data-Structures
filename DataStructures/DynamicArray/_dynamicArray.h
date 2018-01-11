@@ -2,12 +2,12 @@
 #define _DYNAMICARRAY_H
 
 
-typedef int* DynamicArrayPayload;
+typedef void* DynamicArrayPayload;
 
 typedef struct _dynamicArray
 {
     int Count;
-    DynamicArrayPayload* Payload;
+    DynamicArrayPayload* PayloadArr;
     void (*PayloadDeleter)(DynamicArrayPayload);
 } DynamicArray;
 

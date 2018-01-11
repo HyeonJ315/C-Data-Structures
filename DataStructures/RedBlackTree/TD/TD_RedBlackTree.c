@@ -31,9 +31,9 @@ void TD_Randomizer( DynamicArray* dynamicArray )
     for (int i = 0; i < count; i++)
     {
         int randIndex = (rand() % (count - i)) + i;
-        int tmp = (int)dynamicArray->Payload[i];
-        dynamicArray->Payload[i] = dynamicArray->Payload[randIndex];
-        dynamicArray->Payload[randIndex] = (DynamicArrayPayload)tmp;
+        int tmp = (int)dynamicArray->PayloadArr[i];
+        dynamicArray->PayloadArr[i] = dynamicArray->PayloadArr[randIndex];
+        dynamicArray->PayloadArr[randIndex] = (DynamicArrayPayload)tmp;
     }
 }
 
@@ -42,7 +42,7 @@ void TD_RedBlackTreeTestDriver()
     srand( time(NULL) );
     printf( "Creating a new red black tree.\n" );
     
-    DynamicArray* dynamicArray = DynamicArray_New( 0, NULL );
+    DynamicArray* dynamicArray = DynamicArray_NewArray( 0, NULL );
 
     int R = 20;
     DynamicArray_Resize(dynamicArray, R, 0);
@@ -50,21 +50,21 @@ void TD_RedBlackTreeTestDriver()
     for (int j = 0; j < 10; j++)
     {
         RedBlackTree* redBlackTree = RedBlackTree_NewTree(TD_RedBlackTreeComparator, TD_RedBlackTreePayloadDeleter);
-        for (int i = 0; i < R; i++) dynamicArray->Payload[i] = i;
+        for (int i = 0; i < R; i++) dynamicArray->PayloadArr[i] = i;
 
         TD_Randomizer( dynamicArray );
         printf( "\nInserting: " );
         for ( int i = 0; i < R; i++ )
         {
-            printf( "%d, ", dynamicArray->Payload[i] );
-            RedBlackTree_Insert(redBlackTree, dynamicArray->Payload[i] );
+            printf( "%d, ", dynamicArray->PayloadArr[i] );
+            RedBlackTree_Insert(redBlackTree, dynamicArray->PayloadArr[i] );
         }
         TD_Randomizer( dynamicArray );
         printf( "\nDeleting: " );
         for ( int i = 0; i < R; i++ )
         {
-            printf("%d, ", dynamicArray->Payload[i] );
-            RedBlackTree_NodeRemove( redBlackTree, RedBlackTree_NodeFind( redBlackTree, dynamicArray->Payload[i] ) );
+            printf("%d, ", dynamicArray->PayloadArr[i] );
+            RedBlackTree_NodeRemove( redBlackTree, RedBlackTree_NodeFind( redBlackTree, dynamicArray->PayloadArr[i] ) );
             RedBlackTree_Assert( redBlackTree, true );
         }
         RedBlackTree_DeleteTree(redBlackTree);

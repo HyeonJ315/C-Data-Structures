@@ -3,7 +3,7 @@
 
 typedef struct _linkedListNode LinkedListNode;
 
-typedef int* LinkedListPayload;
+typedef void* LinkedListPayload;
 
 // ( Circular linked list )
 typedef struct _linkedListNode

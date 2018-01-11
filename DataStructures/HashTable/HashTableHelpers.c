@@ -2,14 +2,20 @@
 #define HASHTABLEHELPERS_C
 
 #include "HashTableHelpers.h"
+#include <stddef.h>
 
-int HashTable_DefaultHashFunction( HashKey byteArray, HashKeyBytes arraySize)
+size_t HashTable_DefaultHashFunction( HashKey byteArray, HashKeyBytes arraySize)
 {
-    return 0;
+    size_t hash = 0;
+    for ( int i = 0; i < arraySize; ++i )
+        hash = (31*hash) + byteArray[i];
+    return hash;
 }
 
-void HashTable_Rehash( HashTable* hashTable )
+int HashTable_NextPow2( int num )
 {
+    int pow2 = 1;
+    while ( pow2 <= num ) pow2 <<= 1;
+    return pow2;
 }
-
 #endif

@@ -18,9 +18,9 @@ void TD_DynamicArray_Deleter(DynamicArrayPayload integer)
 
 void TD_DynamicArrayTestDriver()
 {
-    DynamicArray* dynamicArray = DynamicArray_New( 0, TD_DynamicArray_Deleter );
+    DynamicArray* dynamicArray = DynamicArray_NewArray( 0, TD_DynamicArray_Deleter );
     DynamicArray_Resize( dynamicArray, 10, 0 );
-    for( int i = 0; i < dynamicArray->Count; ++i ) dynamicArray->Payload[i] = i;
+    for( int i = 0; i < dynamicArray->Count; ++i ) dynamicArray->PayloadArr[i] = i;
     DynamicArray_DebugPrint( dynamicArray );
 
     DynamicArray_RemoveAt( dynamicArray, dynamicArray->Count-1 );
@@ -31,6 +31,9 @@ void TD_DynamicArrayTestDriver()
 
     DynamicArray_RemoveFront( dynamicArray );
     DynamicArray_DebugPrint( dynamicArray );
+
+    DynamicArray_RemoveAt(dynamicArray, 3);
+    DynamicArray_DebugPrint(dynamicArray);
 
     printf("%d", DynamicArray_Find( dynamicArray, 2 ) );
     DynamicArray_DeleteArray( dynamicArray );

@@ -7,9 +7,10 @@
 #include "HashTable/TD/TD_HashTable.h"
 void main()
 {
-    //TD_LinkedListTestDriver();
-    //TD_DynamicArrayTestDriver();
-    //TD_RedBlackTreeTestDriver();
+    TD_LinkedListTestDriver();
+    TD_DynamicArrayTestDriver();
+    TD_RedBlackTreeTestDriver();
+    TD_HashTableTestDriver();
     _CrtDumpMemoryLeaks();
     return;
 }
