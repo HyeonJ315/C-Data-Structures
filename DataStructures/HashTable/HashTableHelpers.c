@@ -12,10 +12,17 @@ size_t HashTable_DefaultHashFunction( HashKey byteArray, HashKeyBytes arraySize)
     return hash;
 }
 
-int HashTable_NextPow2( int num )
+size_t HashTable_NextPow2( size_t num )
 {
-    int pow2 = 1;
+    size_t pow2 = 1;
     while ( pow2 <= num ) pow2 <<= 1;
+    return pow2;
+}
+
+size_t HashTable_PrevPow2( size_t num )
+{
+    size_t pow2 = 1 << 31;
+    while( pow2 >= num ) pow2 >>= 1;
     return pow2;
 }
 #endif

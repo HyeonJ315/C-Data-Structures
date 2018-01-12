@@ -4,6 +4,6 @@
 #include "_hashTable.h"
 
 size_t HashTable_DefaultHashFunction( HashKey byteArray, HashKeyBytes arraySize );
-int HashTable_NextPow2(int num);
-
+size_t HashTable_NextPow2(size_t num);
+size_t HashTable_PrevPow2(size_t num);
 #endif

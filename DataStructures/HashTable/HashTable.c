@@ -20,8 +20,7 @@ HashTable * HashTable_NewTable( void(*payloadDeleter)(HashValue payload) )
     hashTable->HashList       = LinkedList_NewList( NULL );
     hashTable->HashArray      = DynamicArray_NewArray( DEFAULT_HASHARRAY_SIZE, NULL );
 
-    if( !hashTable->HashList   ||
-        !hashTable->HashArray )
+    if( !hashTable->HashList || !hashTable->HashArray )
     {
         if ( hashTable->HashList  ) LinkedList_DeleteList   ( hashTable->HashList  );
         if ( hashTable->HashArray ) DynamicArray_DeleteArray( hashTable->HashArray );
@@ -49,8 +48,7 @@ HashTable * HashTable_NewCustomTable( void  ( *payloadDeleter )( HashValue paylo
     hashTable->HashList       = LinkedList_NewList( NULL );
     hashTable->HashArray      = DynamicArray_NewArray( arraySize, NULL );
 
-    if( !hashTable->HashList   ||
-        !hashTable->HashArray )
+    if( !hashTable->HashList || !hashTable->HashArray )
     {
         if ( hashTable->HashList  ) LinkedList_DeleteList   ( hashTable->HashList  );
         if ( hashTable->HashArray ) DynamicArray_DeleteArray( hashTable->HashArray );
@@ -66,8 +64,7 @@ HashEntry* HashTable_NewEntry( HashKey key, HashKeyBytes keyBytes, HashValue pay
     if ( keyBytes <= 0 ) return NULL;
     HashEntry* hashEntry = malloc( sizeof( HashEntry ) );
     HashKey    hashKey   = malloc( keyBytes );
-    if ( !hashEntry || 
-         !hashKey )
+    if ( !hashEntry || !hashKey )
     {   if( hashEntry ) free( hashEntry );
         if( hashKey   ) free( hashKey   );
         return NULL;
@@ -128,14 +125,13 @@ void HashTable_Rehash( HashTable* hashTable, size_t arraySize )
     if ( !hashTable->HashList  ) return;
     if ( !hashTable->HashArray ) return;
     
-    int nextPow2 = HashTable_NextPow2( arraySize );
     for( int i = 0; i < hashTable->HashArray->Count; ++i )
     {
         LinkedList* linkedList = (LinkedList*) hashTable->HashArray->PayloadArr[i];
-        if( linkedList ) LinkedList_DeleteList( (LinkedList*) hashTable->HashArray->PayloadArr[i] );
+        if( linkedList ) LinkedList_DeleteList( linkedList );
         hashTable->HashArray->PayloadArr[i] = NULL;
     }
-    DynamicArray_Resize( hashTable->HashArray, nextPow2 - hashTable->HashArray->Count, NULL );
+    DynamicArray_Resize( hashTable->HashArray, arraySize - hashTable->HashArray->Count, NULL );
     if (hashTable->HashList->Count > 0) 
     {
         LinkedListNode* currNode = hashTable->HashList->Head;
@@ -159,11 +155,11 @@ void HashTable_Rehash( HashTable* hashTable, size_t arraySize )
     hashTable->LoadFactor = (float) hashTable->HashList->Count / hashTable->HashArray->Count;
 }
 
-bool HashTable_Add( HashTable* hashTable, HashKey key, HashKeyBytes keyBytes, HashValue value )
+bool HashTable_Add( HashTable* hashTable, HashKey key, HashKeyBytes keyBytes, HashValue value, bool rehashOnMaxLoad )
 {
     HashEntry* hashEntry = HashTable_NewEntry( key, keyBytes, value );
     hashEntry->Hash = hashTable->HashFunction( hashEntry->Key, hashEntry->KeyBytes );
-    if( !HashTable_AddEntry(hashTable, hashEntry) )
+    if( !HashTable_AddEntry( hashTable, hashEntry, rehashOnMaxLoad ) )
     {
         HashTable_DeleteEntry( hashTable, hashEntry );
         return false;
@@ -171,7 +167,7 @@ bool HashTable_Add( HashTable* hashTable, HashKey key, HashKeyBytes keyBytes, Ha
     return true;
 }
 
-bool HashTable_AddEntry( HashTable* hashTable, HashEntry* hashEntry )
+bool HashTable_AddEntry( HashTable* hashTable, HashEntry* hashEntry, bool rehashOnMaxLoad )
 {
     if ( !hashTable ) return false;
     if ( !hashEntry ) return false;
@@ -197,20 +193,21 @@ bool HashTable_AddEntry( HashTable* hashTable, HashEntry* hashEntry )
     hashEntry->HashListNode     = hashTable->HashList->Tail;
     hashTable->LoadFactor       = (float) hashTable->HashList->Count / hashTable->HashArray->Count;
     hashTable->Count++;
-    if( hashTable->LoadFactor > hashTable->MaxLoadFactor ) HashTable_Rehash( hashTable, hashTable->HashArray->Count );
+    if( rehashOnMaxLoad && hashTable->LoadFactor > hashTable->MaxLoadFactor ) 
+        HashTable_Rehash( hashTable, HashTable_NextPow2( hashTable->HashArray->Count ) );
     return true;
 }
 
-bool HashTable_Remove( HashTable* hashTable, HashKey key, HashKeyBytes keyBytes )
+bool HashTable_Remove( HashTable* hashTable, HashKey key, HashKeyBytes keyBytes, bool rehashOnMinLoad )
 {
     if ( !hashTable    ) return false;
     if ( keyBytes <= 0 ) return false;
     HashEntry* hashEntry = HashTable_GetEntry( hashTable, key, keyBytes );
     if( !hashEntry ) return false;
-    return HashTable_RemoveEntry( hashTable, hashEntry );
+    return HashTable_RemoveEntry( hashTable, hashEntry, rehashOnMinLoad );
 }
 
-bool HashTable_RemoveEntry( HashTable* hashTable, HashEntry* hashEntry )
+bool HashTable_RemoveEntry( HashTable* hashTable, HashEntry* hashEntry, bool rehashOnMinLoad )
 {
     if ( !hashTable ) return false;
     if ( !hashEntry ) return false;
@@ -225,11 +222,16 @@ bool HashTable_RemoveEntry( HashTable* hashTable, HashEntry* hashEntry )
     HashTable_DeleteEntry( hashTable, hashEntry );
     hashTable->Count--;
     hashTable->LoadFactor = (float) hashTable->HashList->Count / hashTable->HashArray->Count;
+    if( rehashOnMinLoad && hashTable->LoadFactor <= hashTable->MaxLoadFactor / 2 ) 
+        HashTable_Rehash( hashTable, HashTable_PrevPow2( hashTable->HashArray->Count / 2 ) );
     return true;
 }
 
 bool HashTable_ContainsKey( HashTable* hashTable, HashKey key, HashKeyBytes keyBytes )
 {
+    if ( !hashTable ) return false;
+    if ( !hashTable->HashList ) return false;
+    if ( hashTable->HashList->Count <= 0 ) return false;
     size_t hashIndex = hashTable->HashFunction(key, keyBytes) % hashTable->HashArray->Count;
     LinkedList* linkedList = (LinkedList*) hashTable->HashArray->PayloadArr[hashIndex];
     if (!linkedList) return false;
@@ -266,6 +268,9 @@ bool HashTable_ContainsValue( HashTable* hashTable, HashValue value )
 
 HashEntry* HashTable_GetEntry( HashTable* hashTable, HashKey key, HashKeyBytes keyBytes )
 {
+    if ( !hashTable ) return NULL;
+    if ( !hashTable->HashList ) return NULL;
+    if ( hashTable->HashList->Count <= 0 ) return NULL;
     int hashIndex = hashTable->HashFunction(key, keyBytes) % hashTable->HashArray->Count;
     LinkedList* linkedList = (LinkedList*)hashTable->HashArray->PayloadArr[hashIndex];
     if (!linkedList) return NULL;
@@ -286,6 +291,9 @@ HashEntry* HashTable_GetEntry( HashTable* hashTable, HashKey key, HashKeyBytes k
 
 HashValue HashTable_GetValue( HashTable* hashTable, HashKey key, HashKeyBytes keyBytes )
 {
+    if ( !hashTable ) return NULL;
+    if ( !hashTable->HashList ) return NULL;
+    if ( hashTable->HashList->Count <= 0 ) return NULL;
     int hashIndex = hashTable->HashFunction(key, keyBytes) % hashTable->HashArray->Count;
     LinkedList* linkedList = (LinkedList*)hashTable->HashArray->PayloadArr[hashIndex];
     if (!linkedList) return NULL;
@@ -309,7 +317,7 @@ bool HashTable_Clear( HashTable* hashTable )
     if ( !hashTable ) return false;
     if ( !hashTable->HashList ) return false;
     while ( hashTable->Count > 0 )
-        HashTable_RemoveEntry(hashTable, hashTable->HashList->Head->Payload );
+        HashTable_RemoveEntry( hashTable, hashTable->HashList->Head->Payload, false );
     hashTable->LoadFactor = 0;
     return true;
 }

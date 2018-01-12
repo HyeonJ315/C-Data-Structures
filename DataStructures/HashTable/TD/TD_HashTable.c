@@ -11,14 +11,19 @@ void TD_HashTableTestDriver()
     for( int i = 0; i < 256; ++i )
     {
         int value = i;
-        HashTable_Add( hashTable, (char*) &value, sizeof(int), (HashValue) value );
+        HashTable_Add( hashTable, (HashKey) &value, sizeof(int), (HashValue) value, true );
     }
     for( int i = 0; i < 256; ++i )
     {
         int value = i;
-        printf( "%d", HashTable_ContainsKey( hashTable, (HashKey) &value, sizeof(int) ) );
-        printf( "%d", HashTable_ContainsValue( hashTable, (HashValue) value) );
-        printf( "_%d  ", (int) HashTable_GetValue( hashTable, (HashKey) &value, 4 ) );
+        HashTable_Add( hashTable, (HashKey)&value, sizeof(int), (HashValue)value, true );
+        HashTable_ContainsKey(hashTable, (HashKey)&value, sizeof(int));
+        HashTable_ContainsValue(hashTable, (HashValue)value);
+        HashTable_GetValue(hashTable, (HashKey)&value, 4);
+        HashTable_Remove( hashTable, (HashKey) &value, sizeof(int), true );
+        HashTable_ContainsKey( hashTable, (HashKey) &value, sizeof(int) );
+        HashTable_ContainsValue( hashTable, (HashValue) value);
+        HashTable_GetValue( hashTable, (HashKey) &value, 4 );
     }
     HashTable_Clear( hashTable );
     HashTable_DeleteTable( hashTable );
